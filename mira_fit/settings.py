@@ -31,6 +31,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    'localhost'
     'https://mira-fit-9ed22057d1a1.herokuapp.com/',
 ]
 
