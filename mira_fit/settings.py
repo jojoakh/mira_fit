@@ -30,7 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
-    'https://mira-fit-9ed22057d1a1.herokuapp.com/'
+    '127.0.0.1',
+    'https://mira-fit-9ed22057d1a1.herokuapp.com/',
 ]
 
 
