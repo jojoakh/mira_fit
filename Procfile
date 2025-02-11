@@ -1,0 +1,1 @@
+web: gunicorn mira_fit.wsgi:application
