@@ -27,6 +27,7 @@
     <title>Mira Fit</title>
   </head>
   <body>
+    <header class="container-fluid fixed-top">
     
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg navbar-dark custom-dark-blue fixed-top">
@@ -41,7 +42,7 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link" href="/plan">Plan</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/faq">FAQ</a>
@@ -49,13 +50,18 @@
           <li class="nav-item">
             <a class="nav-link" href="/contact">Contact</a>
           </li>
+          {% if request.user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="">My Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Register</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Login</a></li>
+          {% endif %}
         </ul>
       </div>
     </div>
   </nav>
-  
-    
-    <header class="container-fluid fixed-top"></header>
+</header>
 
     {% if messages %}
         <div class="message-container"></div>
@@ -70,41 +76,32 @@
     {% block postloadjs %}
     {% endblock %}
 
-    <!-- Newsletter Section -->
-    <div class="container my-5 text-center">
-      <h2>Subscribe to Our Newsletter</h2>
-      <p>Get the latest updates, tips, and exclusive offers.</p>
-      <form method="POST" action="#">
-          {% csrf_token %}
-          <div class="form-group">
-              <input type="email" name="email" class="form-control w-50 mx-auto" placeholder="Enter your email" required>
-          </div>
-          <button type="submit" class="btn btn-success">Subscribe</button>
-      </form>
-    </div>
-
     <footer class="custom-dark-blue text-white text-center py-4">
       <div class="container">
-        <p class="mt-3">&copy; 2025 Mira Fit. All Rights Reserved.</p>
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get the latest updates, tips, and exclusive offers.</p>
+        <form method="POST" action="#">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="email" name="email" class="form-control w-50 mx-auto" placeholder="Enter your email" required>
+            </div>
+            <button type="submit" class="btn newsletter-btn">Subscribe</button>
+        </form>
         <div class="d-flex justify-content-center">
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener"
-                aria-label="Visit our Facebook page (opens in a new tab)" class="text-white fs-4 mr-3">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="text-white mr-3" style="font-size: 2rem;">
                 <i class="fa-brands fa-square-facebook"></i>
             </a>
-            <a href="https://www.tiktok.com/" target="_blank" rel="noopener"
-                aria-label="Visit our TikTok profile (opens in a new tab)" class="text-white fs-4 mr-3">
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener" class="text-white mr-3" style="font-size: 2rem;">
                 <i class="fa-brands fa-tiktok"></i>
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener"
-                aria-label="Visit our Instagram profile (opens in a new tab)" class="text-white fs-4 mr-3">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="text-white mr-3" style="font-size: 2rem;">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://www.twitter.com/" target="_blank" rel="noopener"
-                aria-label="Visit our Twitter profile (opens in a new tab)" class="text-white fs-4">
+            <a href="https://www.twitter.com/" target="_blank" rel="noopener" class="text-white" style="font-size: 2rem;">
                 <i class="fa-brands fa-twitter"></i>
             </a>
         </div>
-        
+        <p class="mt-3">&copy; 2025 Mira Fit. All Rights Reserved.</p>
       </div>
     </footer>
 
