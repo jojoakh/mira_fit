@@ -8,8 +8,58 @@
   <div class="overlay position-absolute w-100 h-100 d-flex flex-column justify-content-center align-items-center" style="top: 0; background: rgba(0, 0, 0, 0.6);">
     <h1 class="display-4 font-weight-bold">Welcome to Mira Fit</h1>
     <p class="lead">Your journey to a healthier life starts here!</p>
-    
   </div>
 </div>
-{% endblock %}
 
+<!-- About Us Section -->
+<section class="about-us py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="text-dark fw-bold text-center">About Us</h2>
+<p class="text-muted w-75 mx-auto text-center">
+    At <strong>Mira Fit</strong>, we believe that fitness is a <strong>lifestyle</strong>, not a destination.  
+    Whether you're just starting your journey or a seasoned athlete, our platform provides expert-designed workouts,  
+    nutritional guidance, and motivational support to help you <strong>become the best version of yourself</strong>.
+</p>
+<p class="text-muted w-75 mx-auto text-center">
+    Our mission is to empower individuals of all fitness levels by offering **personalized workout plans**,  
+    easy-to-follow meal guides, and a **supportive community** that keeps you inspired. We focus on **sustainable fitness**,  
+    helping you develop habits that last a lifetime—not just quick fixes. With science-backed training techniques  
+    and expert advice, you'll build strength, endurance, and confidence in every step of your journey.
+</p>
+<p class="text-muted w-75 mx-auto text-center">
+    At <strong>Mira Fit</strong>, you’re never alone in your fitness journey. Join a community that celebrates  
+    progress, encourages consistency, and supports you through every challenge. No matter your goals—weight loss,  
+    muscle building, or improving overall well-being—we are here to guide you, push you, and celebrate your success.
+</p>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="card shadow-lg border-0 p-4">
+          <img src="{% static 'images/goal.png' %}" class="card-img-top rounded mx-auto d-block" style="max-width: 50px; height: auto;" alt="Goal Setting">
+          <h5 class="mt-3 text-dark">Personalized Plans</h5>
+          <p class="text-muted">Get customized workout and meal plans designed specifically for your fitness goals, experience level, and lifestyle. Whether you're aiming to lose weight, 
+            build muscle, or improve endurance, our tailored approach ensures you stay on track with ease.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-lg border-0 p-4">
+          <img src="{% static 'images/community.png' %}" class="card-img-top rounded mx-auto d-block" style="max-width: 50px; height: auto;" alt="Community Support">
+          <h5 class="mt-3 text-dark">Supportive Community</h5>
+          <p class="text-muted">Connect with a vibrant fitness community that shares your passion for health and wellness. Engage in discussions, get motivated by success stories, 
+            and support each other through challenges, making your journey more enjoyable and sustainable.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-lg border-0 p-4">
+          <img src="{% static 'images/progress.png' %}" class="card-img-top rounded mx-auto d-block" style="max-width: 50px; height: auto;" alt="Track Progress">
+          <h5 class="mt-3 text-dark">Track Your Progress</h5>
+          <p class="text-muted">Stay motivated by monitoring your fitness achievements in real-time. Set personal goals, track your workouts, measure improvements,
+             and celebrate every milestone along the way. Consistency is key, and we’re here to help you every step of the journey.
+          </p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
