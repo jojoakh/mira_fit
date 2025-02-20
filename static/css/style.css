@@ -7,22 +7,22 @@ html {
 }
 
 .custom-dark-blue {
-    background-color: #ff6600 !important; 
+    background-color: #19011f !important; 
 }
 
 .newsletter-btn {
-    background-color: #D81B60;
+    background-color: #e91a66;
     color: white;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: pointer; 
     transition: background-color 0.3s ease;
 }
 
 .newsletter-btn:hover {
-    background-color: #C2185B;  /* Darker shade on hover */
+    background-color: #a4104b;  /* Darker shade on hover */
 }
 
 
