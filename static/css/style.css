@@ -10,6 +10,15 @@ html {
     background-color: #19011f !important; 
 }
 
+.about-us-section p {
+    font-size: 1.2rem; 
+    line-height: 1.6; 
+}
+
+.about-us-section h2 {
+    font-size: 2rem; 
+}
+
 .newsletter-btn {
     background-color: #e91a66;
     color: white;
@@ -24,7 +33,35 @@ html {
 .newsletter-btn:hover {
     background-color: #a4104b;  /* Darker shade on hover */
 }
-
-
-
+  
+.quick-links {
+    padding-top: 10px; 
+  }
+  
+  .quick-links li {
+    margin-bottom: 10px; 
+  }
+  
+  .quick-links a {
+    font-size: 16px;
+    text-decoration: none; 
+  }
+  
+  .quick-links a:hover {
+    text-decoration: underline; 
+  }
+  
+/* Social media icons styling */
+.social-icons a {
+    color: white; 
+    font-size: 1.5rem; 
+    margin-right: 15px; 
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .social-icons a:hover {
+    color: #a4104b; 
+    transform: scale(1.2); 
+  }
+  
 
