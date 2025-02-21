@@ -35,6 +35,9 @@ ALLOWED_HOSTS = [
     'mira-fit-9ed22057d1a1.herokuapp.com'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://mira-fit-9ed22057d1a1.herokuapp.com"
+]
 
 # Application definition
 
