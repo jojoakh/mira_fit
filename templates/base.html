@@ -70,17 +70,15 @@
   </nav>
 </header>
 
-    {% if messages %}
-        <div class="message-container"></div>
-    {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
+{% if messages %}
+<div class="mt-3">
+    {% for message in messages %}
+        <div class="alert alert-success fixed-top fade-message">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
 
     {% block content %}
-    {% endblock %}
-
-    {% block postloadjs %}
     {% endblock %}
 
     <footer class="custom-dark-blue text-white py-4">
@@ -97,19 +95,20 @@
             </ul>
           </div>
     
-          <!-- Newsletter Section (Center) -->
-          <div class="col-md-4 text-center">
-            <h2>Subscribe to Our Newsletter</h2>
-            <p>Get the latest updates, tips, and exclusive offers.</p>
-            <form method="POST" action="#">
-              {% csrf_token %}
-              <div class="form-group">
-                <input type="email" name="email" class="form-control w-100 mx-auto" placeholder="Enter your email" required>
-              </div>
-              <button type="submit" class="btn newsletter-btn">Subscribe</button>
-            </form>
-          </div>
-    
+            <!-- Newsletter Section -->
+        <div class="col-md-4 text-center">
+          <h2>Subscribe to Our Newsletter</h2>
+          <p>Get the latest updates, tips, and exclusive offers.</p>
+          <form method="POST" action="">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="newsletter">
+            <div class="form-group">
+                {{ newsletter_form.email }}
+            </div>
+            <button type="submit" class="btn newsletter-btn">Subscribe</button>
+        </form>        
+  </div>
+        
           <!-- Social Media Icons -->
           <div class="col-md-3 text-right">
             <h5 class="fw-bold">Follow Us</h5>
@@ -137,6 +136,9 @@
       </div>
     </footer>
     
+    {% block postloadjs %}
+    {% endblock %}
+  
   </body>
 
 <!-- FontAwesome for social media icons -->
