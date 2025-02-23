@@ -1,38 +1,39 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Contact Us</h2>
-    <p class="text-center display-5 fw-bold text-body-emphasis">Have a question? Send us a message. We’d love to hear from you!</p>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <p class="text-center mt-4 text-muted">
-          Before sending your message, you might find an answer to your question in our <a href="/faq/" class="text-primary">FAQ</a> section. 
-          Many common inquiries are already addressed there, and it could save you some time!
-        </p>
-        <p class="text-center mb-4 text-muted">
-          Still have questions? Use the form below to send us a message and we’ll respond promptly.
-        </p>
-      </div>
+<div class="container mt-5 fs-5">
+  <h2 class="text-center display-5 fw-bold purple-text">Contact Us</h2>
+  <p class="text-center fs-4">Have a question? Send us a message. We’d love to hear from you!</p>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <p class="text-center mt-4 text-muted fs-5">
+        Before sending your message, you might find an answer to your question in our <a href="/faq/" class="text-primary">FAQ</a> section. 
+        Many common inquiries are already addressed there, and it could save you some time!
+      </p>
+      <p class="text-center mb-4 text-muted fs-5">
+        Still have questions? Use the form below to send us a message and we’ll respond promptly.
+      </p>
     </div>
-  
+  </div>
+
   <div class="row justify-content-center">
     <div class="col-md-8">
       <form method="post">
         {% csrf_token %}
-        <div class="mb-3">
+        <div class="mb-4 fs-5">
           {{ form.name }}
           <small class="text-danger">{{ form.name.errors }}</small>
         </div>
-        <div class="mb-3">
+        <div class="mb-4 fs-5">
           {{ form.email }}
           <small class="text-danger">{{ form.email.errors }}</small>
         </div>
-        <div class="mb-3">
+        <div class="mb-4 fs-5">
           {{ form.message }}
           <small class="text-danger">{{ form.message.errors }}</small>
         </div>
-        <button type="submit" class="mb-4 btn btn-secondary btn-sm col-auto">
+        <button type="submit" class="mb-4 fs-5 btn btn-secondary btn-sm col-auto">
           Send Message
         </button>
       </form>
@@ -44,17 +45,7 @@
           {% endfor %}
       </div>
   
-      <script>
-          // Hide the success message after 3 seconds (3000ms)
-          setTimeout(function() {
-              let messages = document.querySelectorAll('.fade-message');
-              messages.forEach(function(message) {
-                  message.style.transition = "opacity 0.5s ease-out";
-                  message.style.opacity = "0";
-                  setTimeout(() => message.remove(), 500); // Remove from DOM after fade
-              });
-          }, 3000);
-      </script>
+    
   {% endif %}
   
     </div>

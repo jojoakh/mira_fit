@@ -1,45 +1,67 @@
-{% extends "account/base_entrance.html" %}
+{% extends "base.html" %}  <!-- Extend your base template -->
+
 {% load allauth i18n %}
+
 {% block head_title %}
-    {% trans "Signup" %}
+    {% trans "Sign Up" %}
 {% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    {% setvar link %}
-        <a href="{{ login_url }}">
+    <div class="container"> <!-- Form Container -->
+
+        <!-- Sign-up Heading -->
+        {% element h1 %}
+            {% trans "Sign Up" %}
+        {% endelement %}
+
+        <!-- Link to Sign In if already have an account -->
+        {% setvar link %}
+            <a href="{{ login_url }}">
         {% endsetvar %}
         {% setvar end_link %}
-        </a>
-    {% endsetvar %}
-    {% element p %}
-        {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
-    {% endelement %}
-    {% if not SOCIALACCOUNT_ONLY %}
-        {% url 'account_signup' as action_url %}
-        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-            {% slot body %}
-                {% csrf_token %}
-                {% element fields form=form unlabeled=True %}
-                {% endelement %}
-                {{ redirect_field }}
-            {% endslot %}
-            {% slot actions %}
-                {% element button tags="prominent,signup" type="submit" %}
-                    {% trans "Sign Up" %}
-                {% endelement %}
-            {% endslot %}
+            </a>
+        {% endsetvar %}
+        {% element p %}
+            {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
         {% endelement %}
-    {% endif %}
-    {% if PASSKEY_SIGNUP_ENABLED %}
-        {% element hr %}
-        {% endelement %}
-        {% element button href=signup_by_passkey_url tags="prominent,signup,outline,primary" %}
-            {% trans "Sign up using a passkey" %}
-        {% endelement %}
-    {% endif %}
-    {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
+
+        {% if not SOCIALACCOUNT_ONLY %}
+            {% url 'account_signup' as action_url %}
+            {% element form form=form method="post" action=action_url tags="entrance,signup" %}
+                {% slot body %}
+                    {% csrf_token %}
+
+                    <!-- Remove username and only include Name Field -->
+                    <div class="form-group">
+                        <label for="id_name">{% trans "Name" %}</label>
+                        <input type="text" name="name" id="id_name" class="form-control" required />
+                    </div>
+
+                    <!-- Include other form fields without username -->
+                    {% element fields form=form unlabeled=True %}
+                    {% endelement %}
+                    {{ redirect_field }}
+                {% endslot %}
+
+                {% slot actions %}
+                    {% element button tags="prominent,signup" type="submit" %}
+                        {% trans "Sign Up" %}
+                    {% endelement %}
+                {% endslot %}
+            {% endelement %}
+        {% endif %}
+
+        {% if PASSKEY_SIGNUP_ENABLED %}
+            {% element hr %}
+            {% endelement %}
+            {% element button href=signup_by_passkey_url tags="prominent,signup,outline,primary" %}
+                {% trans "Sign up using a passkey" %}
+            {% endelement %}
+        {% endif %}
+
+        {% if SOCIALACCOUNT_ENABLED %}
+            {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+        {% endif %}
+
+    </div> <!-- End of container -->
 {% endblock content %}

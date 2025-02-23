@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+
+    <!-- Bootstrap Tabs -->
+    <ul class="nav nav-tabs" id="faqTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tab-general" data-bs-toggle="tab" data-bs-target="#content-general" type="button" role="tab" aria-controls="content-general" aria-selected="true">
+                General
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-technical" data-bs-toggle="tab" data-bs-target="#content-technical" type="button" role="tab" aria-controls="content-technical" aria-selected="false">
+                Technical
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-billing" data-bs-toggle="tab" data-bs-target="#content-billing" type="button" role="tab" aria-controls="content-billing" aria-selected="false">
+                Billing
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-fitness-plans" data-bs-toggle="tab" data-bs-target="#content-fitness-plans" type="button" role="tab" aria-controls="content-fitness-plans" aria-selected="false">
+                Fitness Plans
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-workouts-training" data-bs-toggle="tab" data-bs-target="#content-workouts-training" type="button" role="tab" aria-controls="content-workouts-training" aria-selected="false">
+                Workouts & Training
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-motivational" data-bs-toggle="tab" data-bs-target="#content-motivational" type="button" role="tab" aria-controls="content-motivational" aria-selected="false">
+                Motivational
+            </button>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content mt-3" id="faqTabsContent">
+        <!-- General Category -->
+        <div class="tab-pane fade show active" id="content-general" role="tabpanel" aria-labelledby="tab-general">
+            <div class="accordion" id="accordion-general">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+                            <strong>Q: What is Mira Fit?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="heading-1" data-bs-parent="#accordion-general">
+                        <div class="accordion-body">
+                            <strong>A:</strong> Mira Fit is a platform offering personalized fitness plans, expert advice, and guidance to help you achieve your fitness goals.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                            <strong>Q: How can I sign up?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="heading-2" data-bs-parent="#accordion-general">
+                        <div class="accordion-body">
+                            <strong>A:</strong> You can sign up for Mira Fit by clicking on the "Register" button on our homepage and filling in your details.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Category -->
+        <div class="tab-pane fade" id="content-technical" role="tabpanel" aria-labelledby="tab-technical">
+            <div class="accordion" id="accordion-technical">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+                            <strong>Q: What devices are supported?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordion-technical">
+                        <div class="accordion-body">
+                            <strong>A:</strong> Mira Fit is accessible on both desktop and mobile devices through our web app, optimized for all modern browsers.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+                            <strong>Q: How do I reset my password?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#accordion-technical">
+                        <div class="accordion-body">
+                            <strong>A:</strong> To reset your password, go to the login page and click on the "Forgot Password" link. Follow the instructions to reset your password.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Billing Category -->
+        <div class="tab-pane fade" id="content-billing" role="tabpanel" aria-labelledby="tab-billing">
+            <div class="accordion" id="accordion-billing">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-5">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+                            <strong>Q: How can I update my billing information?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-5" class="accordion-collapse collapse" aria-labelledby="heading-5" data-bs-parent="#accordion-billing">
+                        <div class="accordion-body">
+                            <strong>A:</strong> You can update your billing information in the account settings section under the "Billing" tab.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-6">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
+                            <strong>Q: What payment methods do you accept?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-6" class="accordion-collapse collapse" aria-labelledby="heading-6" data-bs-parent="#accordion-billing">
+                        <div class="accordion-body">
+                            <strong>A:</strong>  Payments are processed securely through Stripe. You can set up your payment method during the sign-up process
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fitness Plans Category -->
+        <div class="tab-pane fade" id="content-fitness-plans" role="tabpanel" aria-labelledby="tab-fitness-plans">
+            <div class="accordion" id="accordion-fitness-plans">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-7">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-7" aria-expanded="false" aria-controls="collapse-7">
+                            <strong>Q: Can I customize my fitness plan?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-7" class="accordion-collapse collapse" aria-labelledby="heading-7" data-bs-parent="#accordion-fitness-plans">
+                        <div class="accordion-body">
+                            <strong>A:</strong> Yes! Mira Fit allows you to personalize your fitness plan based on your goals, preferences, and fitness level.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-8">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-8" aria-expanded="false" aria-controls="collapse-8">
+                            <strong>Q: How do I track my progress?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-8" class="accordion-collapse collapse" aria-labelledby="heading-8" data-bs-parent="#accordion-fitness-plans">
+                        <div class="accordion-body">
+                            <strong>A:</strong> You can track your progress through the "Progress" tab in your dashboard, where you'll see detailed analytics of your workouts and goals.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workouts & Training Category -->
+        <div class="tab-pane fade" id="content-workouts-training" role="tabpanel" aria-labelledby="tab-workouts-training">
+            <div class="accordion" id="accordion-workouts-training">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-9">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-9" aria-expanded="false" aria-controls="collapse-9">
+                            <strong>Q: What types of workouts does Mira Fit offer?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-9" class="accordion-collapse collapse" aria-labelledby="heading-9" data-bs-parent="#accordion-workouts-training">
+                        <div class="accordion-body">
+                            <strong>A:</strong> We provide a variety of workouts, including strength training, HIIT, yoga, pilates, and cardio sessions tailored to your fitness level.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-10">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-10" aria-expanded="false" aria-controls="collapse-10">
+                            <strong>Q: Can I follow Mira Fit workouts at home?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-10" class="accordion-collapse collapse" aria-labelledby="heading-10" data-bs-parent="#accordion-workouts-training">
+                        <div class="accordion-body">
+                            <strong>A:</strong> Yes! Our workouts are designed for both gym and home use, with minimal or no equipment required.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-11">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-11" aria-expanded="false" aria-controls="collapse-11">
+                            <strong>Q: How do I track my progress?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-11" class="accordion-collapse collapse" aria-labelledby="heading-11" data-bs-parent="#accordion-workouts-training">
+                        <div class="accordion-body">
+                            <strong>A:</strong> You can log your workouts and track your progress through your dashboard, which provides analytics on your performance.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Motivational Category -->
+        <div class="tab-pane fade" id="content-motivational" role="tabpanel" aria-labelledby="tab-motivational">
+            <div class="accordion" id="accordion-motivational">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-12">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-12" aria-expanded="false" aria-controls="collapse-12">
+                            <strong>Q: How long does it take to see results?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapse-12" class="accordion-collapse collapse" aria-labelledby="heading-12" data-bs-parent="#accordion-motivational">
+                        <div class="accordion-body">
+                            <strong>A:</strong> Everyone’s body is different, but with consistent workouts and proper nutrition, many users start seeing noticeable changes within 4 to 6 weeks.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
