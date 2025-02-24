@@ -7,61 +7,63 @@
 {% endblock head_title %}
 
 {% block content %}
-    <div class="container"> <!-- Form Container -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg" style="width: 500px;">
+        <div class="card-body">
+            <!-- Sign-up Heading -->
+            <h2 class="text-center">{% trans "Sign Up" %}</h2>
+            <hr>
 
-        <!-- Sign-up Heading -->
-        {% element h1 %}
-            {% trans "Sign Up" %}
-        {% endelement %}
+            <!-- Link to Sign In if already have an account -->
+            <p class="text-center">
+                {% blocktranslate %}Already have an account? <a href="{{ login_url }}">Sign in</a>.{% endblocktranslate %}
+            </p>
 
-        <!-- Link to Sign In if already have an account -->
-        {% setvar link %}
-            <a href="{{ login_url }}">
-        {% endsetvar %}
-        {% setvar end_link %}
-            </a>
-        {% endsetvar %}
-        {% element p %}
-            {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
-        {% endelement %}
-
-        {% if not SOCIALACCOUNT_ONLY %}
-            {% url 'account_signup' as action_url %}
-            {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-                {% slot body %}
+            {% if not SOCIALACCOUNT_ONLY %}
+                {% url 'account_signup' as action_url %}
+                <form method="post" action="{{ action_url }}">
                     {% csrf_token %}
 
-                    <!-- Remove username and only include Name Field -->
-                    <div class="form-group">
-                        <label for="id_name">{% trans "Name" %}</label>
-                        <input type="text" name="name" id="id_name" class="form-control" required />
+                    <!-- Name Field -->
+                    <div class="mb-3">
+                        <label for="id_name" class="form-label">{% trans "Name" %}</label>
+                        <input type="text" name="name" id="id_name" class="form-control" placeholder="Name" required>
                     </div>
 
-                    <!-- Include other form fields without username -->
-                    {% element fields form=form unlabeled=True %}
-                    {% endelement %}
+                    <!-- Email Field -->
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">{% trans "Email" %}</label>
+                        <input type="email" name="email" id="id_email" class="form-control" placeholder="Email" required>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="mb-3">
+                        <label for="id_password1" class="form-label">{% trans "Password" %}</label>
+                        <input type="password" name="password1" id="id_password1" class="form-control" placeholder="Password" required>
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="mb-3">
+                        <label for="id_password2" class="form-label">{% trans "Confirm Password" %}</label>
+                        <input type="password" name="password2" id="id_password2" class="form-control" placeholder="Confirm Password" required>
+                    </div>
+
                     {{ redirect_field }}
-                {% endslot %}
 
-                {% slot actions %}
-                    {% element button tags="prominent,signup" type="submit" %}
-                        {% trans "Sign Up" %}
-                    {% endelement %}
-                {% endslot %}
-            {% endelement %}
-        {% endif %}
+                    <!-- Sign Up Button -->
+                    <button type="submit" class="btn btn-primary w-100">{% trans "Sign Up" %}</button>
+                </form>
+            {% endif %}
 
-        {% if PASSKEY_SIGNUP_ENABLED %}
-            {% element hr %}
-            {% endelement %}
-            {% element button href=signup_by_passkey_url tags="prominent,signup,outline,primary" %}
-                {% trans "Sign up using a passkey" %}
-            {% endelement %}
-        {% endif %}
+            {% if PASSKEY_SIGNUP_ENABLED %}
+                <hr>
+                <a href="{{ signup_by_passkey_url }}" class="btn btn-outline-primary w-100 mt-2">{% trans "Sign up using a passkey" %}</a>
+            {% endif %}
 
-        {% if SOCIALACCOUNT_ENABLED %}
-            {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-        {% endif %}
-
-    </div> <!-- End of container -->
+            {% if SOCIALACCOUNT_ENABLED %}
+                {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+            {% endif %}
+        </div>
+    </div>
+</div> <!-- End of container -->
 {% endblock content %}
