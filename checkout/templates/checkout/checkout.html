@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Checkout for {{ plan.name }}</h2>
+    <p>Price: ${{ plan.price }}</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{% endblock %}
