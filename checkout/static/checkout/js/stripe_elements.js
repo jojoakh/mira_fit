@@ -19,9 +19,7 @@ var style = {
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: 'antialiased',
         fontSize: '16px',
-        '::placeholder': {
-            color: '#aab7c4'
-        }
+        '::placeholder': { color: '#aab7c4' }
     },
     invalid: {
         color: '#dc3545',
@@ -35,40 +33,59 @@ card.mount('#card-element');
 
 // Handle real-time validation errors on the card element
 card.addEventListener('change', function(event) {
-    var errorDisplay = document.getElementById('card-errors');
+    var errorDiv = document.getElementById('card-errors');
     if (event.error) {
-        errorDisplay.textContent = event.error.message;
+        errorDiv.innerHTML = `
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${event.error.message}</span>
+        `;
     } else {
-        errorDisplay.textContent = '';
+        errorDiv.textContent = '';
     }
 });
 
 // Handle form submission
 var form = document.getElementById('payment-form');
+var submitButton = document.getElementById('submit-button');
+var processing = false; // Prevent multiple submissions
+
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Disable submit button to prevent multiple clicks
-    var submitButton = document.getElementById('submit-button');
+    if (processing) return;
+    processing = true;
+
+    // Disable card and button during processing
+    card.update({ disabled: true });
     submitButton.disabled = true;
+    submitButton.textContent = 'Processing...';
 
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
             billing_details: {
-                name: form.full_name.value,
-                email: form.email.value,
-                phone: form.phone_number.value
+                name: form.full_name ? form.full_name.value : '',
+                email: form.email ? form.email.value : '',
+                phone: form.phone_number ? form.phone_number.value : ''
             }
         }
     }).then(function(result) {
         if (result.error) {
             // Display error message
-            var errorDisplay = document.getElementById('card-errors');
-            errorDisplay.textContent = result.error.message;
-            submitButton.disabled = false; // Re-enable submit button
+            var errorDiv = document.getElementById('card-errors');
+            errorDiv.innerHTML = `
+                <span class="icon" role="alert">
+                    <i class="fas fa-times"></i>
+                </span>
+                <span>${result.error.message}</span>
+            `;
+            submitButton.disabled = false;
+            submitButton.textContent = 'Pay Now';
+            processing = false;
+            card.update({ disabled: false });
         } else {
-            // Payment successful - submit the form
             if (result.paymentIntent.status === 'succeeded') {
                 form.submit();
             }

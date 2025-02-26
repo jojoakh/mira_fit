@@ -1,11 +1,21 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-/* Global Styles */
-html {
+/* General Styles */
+html, body {
     scroll-behavior: smooth;
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+}
 .custom-dark-blue {
     background-color: #19011f !important; 
 }
@@ -31,7 +41,7 @@ html {
 }
 
 .newsletter-btn:hover {
-    background-color: #a4104b;  /* Darker shade on hover */
+    background-color: #a4104b;  
 }
   
 .quick-links {
@@ -52,6 +62,10 @@ html {
   }
   
 /* Social media icons styling */
+.social-icons {
+  text-decoration: none;
+}
+
 .social-icons a {
     color: white; 
     font-size: 1.5rem; 
@@ -64,3 +78,81 @@ html {
     transform: scale(1.2); 
   }
   
+  .btn {
+    background-color: #e91a66;
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+  }
+  footer {
+    margin-top: auto;
+    padding: 20px 0;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-body {
+  padding: 20px;
+  min-height: 400px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.plan-price {
+  font-size: 20px;
+  font-weight: 600;
+  color: #a4104b; 
+}
+
+.btn-success {
+  background-color: #e91a66;
+  border-color: #e91a66;
+  font-weight: bold;
+  padding: 12px 20px;
+  font-size: 16px;
+}
+
+.btn-success:hover {
+  background-color: #a4104b;
+  border-color: #a4104b;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* Responsiveness */
+@media (max-width: 767px) {
+  .card-body {
+      padding: 15px;
+  }
+
+  .card-title {
+      font-size: 20px;
+  }
+
+  .card-text {
+      font-size: 12px;
+  }
+}
