@@ -84,6 +84,9 @@ def payment(request, order_id):
 @login_required
 def payment_success(request, order_id):
     order = get_object_or_404(Order, id=order_id)
-    order.status = 'Paid'
-    order.save()
+
+    if order.status != 'Paid':
+        order.status = 'Paid'
+        order.save()
+
     return render(request, 'checkout/success.html', {'order': order})
