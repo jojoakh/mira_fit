@@ -27,4 +27,5 @@ urlpatterns = [
     path("faq/", include("faq.urls")),
     path("plan/", include("plan.urls")),
     path('checkout/', include('checkout.urls')),
+    path('profiles/', include('profiles.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

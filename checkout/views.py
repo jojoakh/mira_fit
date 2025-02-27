@@ -37,6 +37,9 @@ def checkout(request, plan_id):
             # Create a new order
             order = Order.objects.create(
                 user=request.user,
+                full_name=request.user.get_full_name() or
+                request.user.username,
+                email=request.user.email,
                 order_number=generate_order_number(),
                 amount=plan.price,
                 status="Pending",

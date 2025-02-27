@@ -1,6 +1,7 @@
 {% extends "base.html" %} 
+
 {% load i18n %}
-{% load allauth account %}
+{% load account %}
 
 {% block head_title %}
     {% trans "Sign In" %}
@@ -10,61 +11,28 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow-lg" style="width: 500px;">
         <div class="card-body">
-            <!-- Sign-in Heading -->
-            <h2 class="text-center mt-5 mb-4">Login</h2>
+            <h2 class="text-center mb-4">{% trans "Sign In" %}</h2>
             <hr>
 
-            {% if not SOCIALACCOUNT_ONLY %}
-                <p class="text-center">
-                    {% blocktranslate %}Don't have an account? <a href="{{ signup_url }}">Sign up</a> first.{% endblocktranslate %}
-                </p>
-                
-                {% url 'account_login' as login_url %}
-                <form method="post" action="{{ login_url }}">
-                    {% csrf_token %}
+            <p class="text-center">
+                {% blocktranslate %}If you have not created an account yet, then please <a href="{{ signup_url }}">sign up</a> first.{% endblocktranslate %}
+            </p>
 
-                    <!-- Email Field -->
-                    <div class="mb-3">
-                        <label for="id_login" class="form-label">{% trans "Email" %}</label>
-                        <input type="email" name="login" id="id_login" class="form-control" placeholder="Email" required>
-                    </div>
+            <form method="post" action="{% url 'account_login' %}">
+                {% csrf_token %}
 
-                    <!-- Password Field -->
-                    <div class="mb-3">
-                        <label for="id_password" class="form-label">{% trans "Password" %}</label>
-                        <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>
-                    </div>
+                {{ form.as_p }}
 
-                    {{ redirect_field }}
+                {{ redirect_field }}
 
-                    <!-- Sign In Button -->
-                    <button type="submit" class="btn btn-primary w-100">{% trans "Sign In" %}</button>
-                </form>
-            {% endif %}
-
-            {% if LOGIN_BY_CODE_ENABLED or PASSKEY_LOGIN_ENABLED %}
-                <hr>
-                <div class="text-center">
-                    {% if PASSKEY_LOGIN_ENABLED %}
-                        <button type="submit" form="mfa_login" id="passkey_login" class="btn btn-outline-primary w-100 my-2">{% trans "Sign in with a passkey" %}</button>
-                    {% endif %}
-                    {% if LOGIN_BY_CODE_ENABLED %}
-                        <a href="{{ request_login_code_url }}" class="btn btn-outline-secondary w-100 my-2">{% trans "Mail me a sign-in code" %}</a>
-                    {% endif %}
-                </div>
-            {% endif %}
+                <button type="submit" class="btn btn-primary w-100">{% trans "Sign In" %}</button>
+            </form>
 
             {% if SOCIALACCOUNT_ENABLED %}
+                <hr>
                 {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
             {% endif %}
         </div>
     </div>
 </div>
 {% endblock content %}
-
-{% block extra_body %}
-    {{ block.super }}
-    {% if PASSKEY_LOGIN_ENABLED %}
-        {% include "mfa/webauthn/snippets/login_script.html" with button_id="passkey_login" %}
-    {% endif %}
-{% endblock %}

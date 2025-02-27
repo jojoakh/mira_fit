@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Your Profile</h2>
+
+<!-- User Info -->
+<div>
+    <img src="{{ profile.image.url }}" alt="Profile Picture" width="100">
+    <p><strong>Name:</strong> {{ profile.user.get_full_name }}</p>
+    <p><strong>Email:</strong> {{ profile.user.email }}</p>
+    <p><strong>Phone:</strong> {{ profile.phone_number }}</p>
+    <p><strong>Address:</strong> {{ profile.address }}</p>
+    <p><strong>Gender:</strong> {{ profile.gender }}</p>
+    <p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
+    <p><strong>Current Weight:</strong> {{ profile.current_weight }} kg</p>
+    <p><strong>Height:</strong> {{ profile.height }} cm</p>
+    <p><strong>Goal Weight:</strong> {{ profile.goal_weight }} kg</p>
+</div>
+
+<!-- Buttons -->
+<a href="{% url 'profiles:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+<a href="{% url 'profiles:add_weight_log' %}" class="btn btn-success">Add Weight Log</a>
+<a href="{% url 'profiles:delete_profile' %}" class="btn btn-danger">Delete Profile</a>
+
+<hr>
+
+<!-- Weight Logs -->
+<h3>Weight Logs</h3>
+<ul>
+    {% for log in weight_logs %}
+    <li>{{ log.entry_date }} - {{ log.weight }} kg</li>
+    {% empty %}
+    <li>No weight logs yet.</li>
+    {% endfor %}
+</ul>
+
+<!-- Order History -->
+<h3>Your Orders</h3>
+<ul>
+    {% for order in orders %}
+    <li>Order #{{ order.order_number }} - {{ order.amount }} USD ({{ order.status }})</li>
+    {% empty %}
+    <li>No orders yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,9 +1,38 @@
 {% extends "base.html" %}
 {% load static %}
-{% block content %}
-<div class="container text-center mt-5">
-    <h2>Payment Successful</h2>
-    <p>Thank you for your purchase! Your order number is <strong>{{ order.order_number }}</strong>.</p>
-    <a href="{% url 'plan' %}" class="btn btn-primary">Return to Plans</a>
-</div>
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center">Thank You for Your Purchase!</h2>
+        <p class="text-center">A confirmation email has been sent to <strong>{{ order.email }}</strong>.</p>
+        
+        <div class="order-confirmation-wrapper p-3 border rounded shadow-sm">
+            <h4>Order Summary</h4>
+            <hr>
+            <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+            <p><strong>Total Amount Paid:</strong> ${{ order.amount }}</p>
+            <p><strong>Purchased Plan:</strong> 
+                {% for plan in order.plans.all %}
+                  {{ plan.name }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                  No plan selected.
+                {% endfor %}
+              </p>              
+            <p><strong>Access:</strong> You can now start your fitness journey!</p>
+
+            <hr>
+            <h4>User Information</h4>
+            <p><strong>Full Name:</strong> {{ order.full_name }}</p>
+            <p><strong>Email:</strong> {{ order.email }}</p>
+
+            <div class="text-center mt-4">
+                <a href="{% url 'plan' %}" class="btn btn-primary">Return to Plans</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
