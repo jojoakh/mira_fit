@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var clientSecret = document.getElementById("id_client_secret").textContent.trim();
 
     // Initialize Stripe.js
-    var stripe = Stripe(stripePublicKey);
+    var stripe = stripe(stripePublicKey);
     var elements = stripe.elements();
 
     // Define styling for the Stripe card input

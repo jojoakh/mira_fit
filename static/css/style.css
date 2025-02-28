@@ -180,6 +180,11 @@ h2 {
       font-size: 14px;  /* Smaller font size for mobile */
   }
 
+  h2 {
+    margin: 10px 0;
+    padding: 15px;
+}
+
   .card-body {
       padding: 15px;
   }
@@ -209,9 +214,8 @@ h2 {
   /* Footer */
   footer {
       padding: 15px;
-      font-size: 14px;
+      font-size: 16px;
   }
-}
 
 /* Extra Small Screens (Very Small Devices) */
 @media (max-width: 480px) {
@@ -238,6 +242,11 @@ h2 {
 
   footer {
       padding: 10px;
-      font-size: 12px;
+      font-size: 15px;
   }
+
+  .social-icons {
+    align-items: center;
+  }
+}
 }
