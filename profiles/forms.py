@@ -1,15 +1,16 @@
 from django import forms
 from .models import UserProfile, WeightLog
-# yourapp/forms.py
 from allauth.account.forms import SignupForm
 
 
 class CustomSignupForm(SignupForm):
+    first_name = forms.CharField(max_length=30, required=True, label="First Name")
+    last_name = forms.CharField(max_length=30, required=True, label="Last Name")
+
     def save(self, request):
-        user = super().save(request)
-        # Add your custom save logic here
-        # For example, setting a custom attribute
-        user.custom_attribute = 'value'
+        user = super(CustomSignupForm, self).save(request)
+        user.first_name = self.cleaned_data["first_name"]
+        user.last_name = self.cleaned_data["last_name"]
         user.save()
         return user
 
