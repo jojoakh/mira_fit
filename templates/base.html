@@ -71,6 +71,7 @@
             </li>
             {% if request.user.is_authenticated %}
               <li class="nav-item"><a class="nav-link" href="{% url 'profiles:profile_view' %}">My Profile</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'client_reviews' %}">Leave a Review</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
             {% else %}
               <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Register</a></li>

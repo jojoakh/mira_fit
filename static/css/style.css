@@ -1,104 +1,114 @@
 /* General Styles */
 html, body {
-    scroll-behavior: smooth;
-    height: 100%;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fa;
-
+  scroll-behavior: smooth;
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 .container {
-  flex: 1;
+flex: 1;
 }
+
 .custom-dark-blue {
-    background-color: #19011f !important; 
+  background-color: #19011f !important;
 }
 
 .about-us-section p {
-    font-size: 1.2rem; 
-    line-height: 1.6; 
+  font-size: 1.2rem; 
+  line-height: 1.6;
 }
 
 .about-us-section h2 {
-    font-size: 2rem; 
+  font-size: 2rem;
 }
 
+/* Newsletter Button */
 .newsletter-btn {
-    background-color: #e91a66;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer; 
-    transition: background-color 0.3s ease;
+  background-color: #e91a66;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .newsletter-btn:hover {
-    background-color: #a4104b;  
+  background-color: #a4104b;
 }
-  
+
+/* Quick Links */
 .quick-links {
-    padding-top: 10px; 
-  }
-  
-  .quick-links li {
-    margin-bottom: 10px; 
-  }
-  
-  .quick-links a {
-    font-size: 16px;
-    text-decoration: none; 
-  }
-  
-  .quick-links a:hover {
-    text-decoration: underline; 
-  }
-  
-/* Social media icons styling */
+  padding-top: 10px;
+}
+
+.quick-links li {
+  margin-bottom: 10px;
+}
+
+.quick-links a {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.quick-links a:hover {
+  text-decoration: underline;
+}
+
+/* Social Media Icons Styling */
 .social-icons {
   text-decoration: none;
 }
 
 .social-icons a {
-    color: white; 
-    font-size: 1.5rem; 
-    margin-right: 15px; 
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
-  
-  .social-icons a:hover {
-    color: #a4104b; 
-    transform: scale(1.2); 
-  }
-  
-  .btn {
-    background-color: #e91a66;
-    color: white; 
-    border: none; 
-    padding: 10px 20px; 
-    border-radius: 5px; 
-  }
-  footer {
-    margin-top: auto;
-    padding: 20px 0;
+  color: white;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
+.social-icons a:hover {
+  color: #a4104b;
+  transform: scale(1.2);
+}
+
+/* General Button Styles */
+.btn {
+  background-color: #e91a66;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+footer {
+  margin-top: auto;
+  padding: 20px 0;
+  background-color: #19011f;
+  color: white;
+  text-align: center;
+}
+
+/* Heading Styles */
 h2 {
   font-size: 32px;
   font-weight: bold;
 }
 
+/* Card Styles */
 .card {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .card-body {
@@ -120,7 +130,7 @@ h2 {
 .plan-price {
   font-size: 20px;
   font-weight: 600;
-  color: #a4104b; 
+  color: #a4104b;
 }
 
 .btn-success {
@@ -136,6 +146,7 @@ h2 {
   border-color: #a4104b;
 }
 
+/* Flexbox for Row Layout */
 .row {
   display: flex;
   justify-content: space-around;
@@ -143,16 +154,90 @@ h2 {
 }
 
 /* Responsiveness */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 1024px) {
+  .card-body {
+      padding: 18px;
+  }
+
+  .card-title {
+      font-size: 22px;
+  }
+
+  .card-text {
+      font-size: 16px;
+  }
+
+  .row {
+      justify-content: center;  /* Center-align cards on medium screens */
+  }
+}
+
+/* Small Screens (Mobile) */
 @media (max-width: 767px) {
+  html, body {
+      font-size: 14px;  /* Smaller font size for mobile */
+  }
+
   .card-body {
       padding: 15px;
   }
 
   .card-title {
-      font-size: 20px;
+      font-size: 18px;
   }
 
   .card-text {
+      font-size: 14px;
+  }
+
+  .row {
+      justify-content: center;
+  }
+
+  /* Adjust button sizes for mobile */
+  .newsletter-btn, .btn-success {
+      padding: 8px 16px;
+      font-size: 14px;
+  }
+
+  .quick-links a {
+      font-size: 14px;
+  }
+
+  /* Footer */
+  footer {
+      padding: 15px;
+      font-size: 14px;
+  }
+}
+
+/* Extra Small Screens (Very Small Devices) */
+@media (max-width: 480px) {
+  .card-body {
+      padding: 10px;
+  }
+
+  .card-title {
+      font-size: 16px;
+  }
+
+  .card-text {
+      font-size: 12px;
+  }
+
+  .plan-price {
+      font-size: 16px;
+  }
+
+  .newsletter-btn, .btn-success {
+      padding: 6px 12px;
+      font-size: 12px;
+  }
+
+  footer {
+      padding: 10px;
       font-size: 12px;
   }
 }

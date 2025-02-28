@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import NewsletterSubscriber
+from .models import NewsletterSubscriber, ClientReview
 
 
 class NewsletterSubscriberAdmin(admin.ModelAdmin):
@@ -18,3 +18,16 @@ class NewsletterSubscriberAdmin(admin.ModelAdmin):
 
 # Register the model with the customized admin
 admin.site.register(NewsletterSubscriber, NewsletterSubscriberAdmin)
+
+
+class ClientReviewAdmin(admin.ModelAdmin):
+    list_display = ('user', 'rating', 'approved', 'created_at')
+    list_filter = ('approved', 'created_at')
+    search_fields = ('user__username', 'comment')
+    actions = ['approve_reviews']
+
+    def approve_reviews(self, request, queryset):
+        queryset.update(approved=True)
+
+
+admin.site.register(ClientReview, ClientReviewAdmin)

@@ -1,5 +1,5 @@
 from django import forms
-from .models import NewsletterSubscriber
+from .models import NewsletterSubscriber, ClientReview
 
 
 class NewsletterForm(forms.ModelForm):
@@ -11,3 +11,9 @@ class NewsletterForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Enter your email'})
         }
+
+
+class ClientReviewForm(forms.ModelForm):
+    class Meta:
+        model = ClientReview
+        fields = ['rating', 'comment']
