@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.conf import settings
 import stripe
 import uuid
@@ -21,9 +22,15 @@ def checkout(request, plan_id):
 
     plan = get_object_or_404(Plan, id=plan_id)
     form = OrderForm(request.POST or None)
-    intent = None  # ✅ Ensure intent exists
+    intent = None
 
-    # ✅ Check if an order already exists for this user and plan
+    existing_order = Order.objects.filter(user=request.user,
+                                          plans=plan, paid=True).exists()
+
+    if existing_order:
+        messages.warning(request, "You have already purchased this plan.")
+        return redirect('plan')  # Redirect to the plans page
+
     order = Order.objects.filter(user=request.user, plans=plan).first()
 
     if not order:

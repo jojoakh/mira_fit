@@ -80,15 +80,6 @@ flex: 1;
   transform: scale(1.2);
 }
 
-/* General Button Styles */
-.btn {
-  background-color: #e91a66;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
 footer {
   margin-top: auto;
   padding: 20px 0;
@@ -133,17 +124,31 @@ h2 {
   color: #a4104b;
 }
 
-.btn-success {
+.btn {
   background-color: #e91a66;
   border-color: #e91a66;
+  color: white;
   font-weight: bold;
   padding: 12px 20px;
   font-size: 16px;
+  border-radius: 5px;
 }
 
-.btn-success:hover {
+.btn:hover {
   background-color: #a4104b;
   border-color: #a4104b;
+}
+
+.btn-success {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  color: white !important;
+}
+
+.btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: white !important;
 }
 
 /* Flexbox for Row Layout */

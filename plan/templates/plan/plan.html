@@ -2,6 +2,7 @@
 {% block content %}
 <div class="container mt-5">
     <h2 class="text-center mt-5 mb-4">Fitness Plans</h2>
+
     <div class="row">
         {% for plan in plans %}
         <div class="col-md-4 mb-4">
@@ -10,7 +11,14 @@
                     <h5 class="card-title">{{ plan.name }}</h5>
                     <p class="card-text">{{ plan.description|truncatewords:15 }}</p>
                     <h6 class="plan-price">${{ plan.price }}</h6>
-                    <a href="{% url 'checkout' plan.id %}" class="btn btn-success">Buy Now</a>
+
+                    <!--  Check if the user has purchased this plan -->
+                    {% if plan in user.orders.all %}
+                        <button class="btn btn-secondary" disabled>Already Purchased</button>
+                    {% else %}
+                        <a href="{% url 'checkout' plan.id %}" class="btn">Buy Now</a>
+                    {% endif %}
+
                 </div>
             </div>
         </div>
