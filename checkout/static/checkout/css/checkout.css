@@ -1,117 +1,37 @@
-/* Custom Styles for Checkout */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;  
-}
-
-h2 {
-    color: #333;
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center; 
-    margin-bottom: 20px; 
-}
-
-p {
-    font-size: 16px;
-    color: #555;
-    text-align: center; 
-}
-
-/* Payment Form Container */
-#payment-form {
-    background-color: #fff;  
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-/* Card Element */
-#card-element {
-    background-color: #fff;
-    border-radius: 4px;
-    border: 1px solid #ced4da;
-    padding: 10px;
-    margin-bottom: 15px;  /* Add space below the card input */
-}
-
-/* Card Errors */
-#card-errors {
-    font-size: 14px;
-    color: #e91a66;  
-    margin-top: 10px;
-}
-
-/* Stripe Element Styles */
 .StripeElement,
 .stripe-style-input {
-    box-sizing: border-box;
-    height: 40px;
-    padding: 10px 12px;
-    border: 1px solid #ced4da; 
-    border-radius: 4px;
-    background-color: white;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
-    transition: box-shadow 150ms ease;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
 }
 
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-    box-shadow: 0 1px 3px 0 #cfd7df;
+  box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
+  background-color: #fefde5 !important;
 }
 
 .stripe-style-input::placeholder {
     color: #aab7c4;
 }
 
-/* Submit Button */
-#submit-button {
-    background-color: #e91a66;  
-    border-color: #e91a66; 
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.fieldset-label {
+    position: relative;
+    right: .5rem;
 }
 
-#submit-button:hover {
-    background-color: #a4104b;  
-}
-
-/* Responsiveness for smaller screens */
-@media (max-width: 767px) {
-    .container {
-        padding: 15px;  
-    }
-
-    h2 {
-        font-size: 24px;  
-        margin-bottom: 15px;  
-    }
-
-    .col-md-6 {
-        padding: 0;
-    }
-
-    #payment-form {
-        padding: 15px;  
-    }
-
-    #card-element {
-        margin-bottom: 10px;  
-    }
-
-    #submit-button {
-        padding: 10px 18px;  
-        font-size: 14px;  
-    }
+#payment-form .form-control,
+#card-element {
+    color: #000;
+    border: 1px solid #000;
 }
