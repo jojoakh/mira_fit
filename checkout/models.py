@@ -24,14 +24,7 @@ class Order(models.Model):
     amount = models.DecimalField(max_digits=7,
                                  decimal_places=2, blank=True, default=0)
 
-    # Order status
-    ORDER_STATUS = [
-        ('Pending', 'Pending'),
-        ('Paid', 'Paid'),
-        ('Canceled', 'Canceled'),
-    ]
-    status = models.CharField(max_length=10,
-                              choices=ORDER_STATUS, default='Pending')
+    paid = models.BooleanField(default=False)
 
     # Stripe Payment Intent ID (Used for tracking payments)
     stripe_payment_intent_id = models.CharField(max_length=254,

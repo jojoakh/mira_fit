@@ -3,6 +3,6 @@ from .views import checkout, payment_success
 
 urlpatterns = [
     path('checkout/<int:plan_id>/', checkout, name='checkout'),
-    path('payment-success/<int:order_id>/',
+    path('success/<str:payment_intent_id>/',
          payment_success, name='payment_success'),
 ]

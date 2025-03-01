@@ -1,15 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
+from django.conf import settings
 import stripe
-import os
 import uuid
 from .models import Order
 from .forms import OrderForm
 from plan.models import Plan
-
-stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
-stripe_public_key = os.getenv('STRIPE_PUBLIC_KEY')
 
 
 def generate_order_number():
@@ -19,49 +15,65 @@ def generate_order_number():
 
 @login_required
 def checkout(request, plan_id):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    stripe.api_key = stripe_secret_key
+
     plan = get_object_or_404(Plan, id=plan_id)
-    order = Order.objects.filter(user=request.user,
-                                 plans=plan, status="Pending").first()
     form = OrderForm(request.POST or None)
+    intent = None  # ✅ Ensure intent exists
 
-    if request.method == 'POST':
-        if form.is_valid():
-            order = form.save(commit=False)
-            order.user = request.user
-            order.order_number = generate_order_number()
-            order.amount = plan.price
-            order.status = "Pending"
-            order.save()
-            order.plans.set([plan])
+    # ✅ Check if an order already exists for this user and plan
+    order = Order.objects.filter(user=request.user, plans=plan).first()
 
-            # Create Stripe PaymentIntent
-            intent = stripe.PaymentIntent.create(
-                amount=int(plan.price * 100),
-                currency="usd",
-                metadata={"order_id": str(order.id)},
-            )
+    if not order:
+        order = Order(
+            user=request.user,
+            order_number=generate_order_number(),
+            amount=plan.price,
+            full_name=request.user.get_full_name() or request.user.username,
+            email=request.user.email
+        )
+        order.save()
+        order.plans.set([plan])
 
-            order.stripe_payment_intent_id = intent.id
-            order.save()
+    # ✅ Always create a PaymentIntent if it does not exist
+    if not order.stripe_payment_intent_id:
+        intent = stripe.PaymentIntent.create(
+            amount=int(plan.price * 100),
+            currency="usd",
+            metadata={"order_id": str(order.id)},
+        )
+        order.stripe_payment_intent_id = intent.id
+        order.save()
+    else:
+        intent = stripe.PaymentIntent.retrieve(order.stripe_payment_intent_id)
 
-            return redirect(reverse('checkout', args=[plan.id]))
+    # ✅ If intent still does not exist, set a default value to avoid crashes
+    client_secret = intent.client_secret if intent else ""
 
     context = {
         'form': form,
-        'order': order,
         'plan': plan,
         'stripe_public_key': stripe_public_key,
+        'client_secret': client_secret,  # ✅ Ensure this is passed correctly
     }
     return render(request, 'checkout/checkout.html', context)
 
 
 @login_required
-def payment_success(request, order_id):
+def payment_success(request, payment_intent_id):
     """Handles successful payment and displays the confirmation page."""
-    order = get_object_or_404(Order, id=order_id)
+    order = get_object_or_404(Order,
+                              stripe_payment_intent_id=payment_intent_id)
 
-    if order.status != 'Paid':
-        order.status = 'Paid'
-        order.save()
+    # ✅ Mark order as Paid
+    order.paid = True
+    order.save()
 
-    return render(request, 'checkout/success.html', {'order': order})
+    template = 'checkout/success.html'
+    context = {
+        'order': order,  # The order instance to display
+    }
+
+    return render(request, template, context)
