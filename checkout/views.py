@@ -20,7 +20,8 @@ def generate_order_number():
 @login_required
 def checkout(request, plan_id):
     plan = get_object_or_404(Plan, id=plan_id)
-    order = Order.objects.filter(user=request.user, plans=plan, status="Pending").first()
+    order = Order.objects.filter(user=request.user,
+                                 plans=plan, status="Pending").first()
     form = OrderForm(request.POST or None)
 
     if request.method == 'POST':
