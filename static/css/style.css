@@ -1,7 +1,6 @@
 /* General Styles */
 html, body {
   scroll-behavior: smooth;
-  height: 100%;
   margin: 0;
   font-family: 'Arial', sans-serif;
   background-color: #f4f7fa;
