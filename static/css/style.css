@@ -65,13 +65,14 @@ flex: 1;
 
 /* Social Media Icons Styling */
 .social-icons {
-  text-decoration: none;
+  gap: 15px;
 }
 
 .social-icons a {
   color: white;
   font-size: 1.5rem;
   margin-right: 15px;
+  text-decoration: none;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
@@ -240,7 +241,7 @@ h2 {
       font-size: 16px;
   }
 
-  .newsletter-btn, .btn-success {
+  .newsletter-btn, .btn-success, .btn {
       padding: 6px 12px;
       font-size: 12px;
   }

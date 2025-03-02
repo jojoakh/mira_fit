@@ -1,6 +1,14 @@
+/* Profile Page Layout - Flexbox for Side-by-Side Layout */
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;  /* Space between profile, weight logs, and orders */
+    flex-wrap: wrap;  /* Ensure it adjusts properly on smaller screens */
+}
+
 /* Profile Card */
 .profile-card {
-    width: 50%;
+    flex: 1;
     max-width: 450px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -25,27 +33,30 @@
     object-fit: cover;
 }
 
-/* Centered Buttons */
+/* Buttons */
 .btn {
     margin: 5px;
+    font-size: 16px;
+    padding: 10px 20px;
 }
 
+/* Green for Edit Profile & Weight Log */
 .btn-success {
     background-color: #28a745 !important;
     border-color: #28a745 !important;
     color: white !important;
 }
 
+.btn-success:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+}
+
+/* Red for Delete Profile */
 .btn-danger {
     background-color: #dc3545 !important;
     border-color: #dc3545 !important;
     color: white !important;
-}
-
-/* ✅ Ensure Hover Effects Work */
-.btn-success:hover {
-    background-color: #218838 !important;
-    border-color: #1e7e34 !important;
 }
 
 .btn-danger:hover {
@@ -55,6 +66,21 @@
 
 /* Order & Weight Log Styling */
 .card {
+    flex: 1;
     border-radius: 10px;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* ✅ Adjust for Mobile */
+@media (max-width: 992px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-card, .card {
+        width: 100%;
+        max-width: 600px;
+    }
 }

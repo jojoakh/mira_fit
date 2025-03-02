@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://mira-fit-9ed22057d1a1.herokuapp.com/sitemap.xml

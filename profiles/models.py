@@ -9,9 +9,6 @@ class UserProfile(models.Model):
     )
     phone_number = models.CharField(max_length=15, blank=True)
     address = models.TextField(max_length=40, blank=True)
-    image = models.ImageField(upload_to='images/',
-                              default='media/images/default.jpg',
-                              null=True, blank=True)
     gender = models.CharField(
         max_length=10,
         choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')],
