@@ -69,7 +69,7 @@ form.addEventListener('submit', function(ev) {
             $('#submit-button').attr('disabled', false);
         } else {
             if (result.paymentIntent.status === 'succeeded') {
-                // ✅ Redirect to success page with order ID
+                // Redirect to success page with order ID
                 window.location.href = `/checkout/success/${result.paymentIntent.id}/`;
                 
             }
