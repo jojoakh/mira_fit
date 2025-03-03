@@ -12,11 +12,11 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | Directory | File | Screenshot | Notes |
 | --- | --- | --- | --- |
 | profiles | profiles.html | ![screenshot](documentation/html-profiles-validation.png) | Pass: No Errors |
-| accounts | signup.html | ![screenshot](documentation/html-signup-validation.png) | I am aware of this error from the validator and is happening due to allauth. I have attempted to remove it in the signup form however I was unable to fix it for that reason error will still show up in the validator. |
+| accounts | signup.html | ![screenshot](documentation/html-signup-validation.png) | I am aware of this errors from the validator and is happening due to allauth. |
 | checkout | checkout.html | ![screenshot](documentation/html-checkout-validation.png) | Pass: No Errors |
 | contact | contact_form.html | ![screenshot](documentation/html-contact-validation.png) | Pass: No Errors |
 | faq | faq.html | ![screenshot](documentation/faq-html-validation.png) | Pass: No Errors |
-| home | home.html | ![screenshot](documentation/testing/validation/html/html-validation-home.png) | Pass: No Errors |
+| home | home.html | ![screenshot](documentation/html-homepage-validation.png) | Pass: No Errors |
 | plans | plans.html | ![screenshot](documentation/html-plans-validation.png) | Pass: No Errors |
 |accounts | login.html | ![screenshot](documentation/html-login-validation.png) | Pass: No Errors |
 | home | review.html | ![screenshot](documentation/html-review-validation.png) | Pass: No Errors |
@@ -165,5 +165,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | As an **admin**, I want to **view orders** so that **I can keep track of all payments made.** | ![screenshot](documentation/admin-order.png) |
 | As a **site admin** I can **view and manage newsletter subscribers** so that I can send newsletter to all subscribers. | ![screenshot](documentation/admin-newsletter.png) |
 
+## Bugs
 
-|
+ - **Existing Bug**
+All bugs have been fixed except for the error in the Django-Allauth signup form.

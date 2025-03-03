@@ -9,7 +9,8 @@ def home(request):
     """
     Home page view with newsletter subscription handling and latest reviews.
     """
-    if request.method == 'POST' and request.POST.get('form_type') == 'newsletter':
+    if request.method == 'POST' and request.POST.get(
+                                        'form_type') == 'newsletter':
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
@@ -24,7 +25,8 @@ def home(request):
                                    extra_tags='newsletter')
 
     # Get latest approved reviews
-    reviews = ClientReview.objects.filter(approved=True).order_by('-created_at')[:3]
+    reviews = ClientReview.objects.filter(approved=True).order_by(
+                                        '-created_at')[:3]
 
     context = {
         'newsletter_form': NewsletterForm(),

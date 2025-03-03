@@ -15,7 +15,8 @@ def newsletter_form(request):
     """
     form = NewsletterForm()
 
-    if request.method == 'POST' and request.POST.get('form_type') == 'newsletter':
+    if request.method == 'POST' and request.POST.get(
+                                'form_type') == 'newsletter':
         form = NewsletterForm(request.POST)
         if form.is_valid():
             subscriber = form.save()
