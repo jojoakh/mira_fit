@@ -109,7 +109,7 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | --- | --- | --- | --- |
 | Home | ![screenshot](documentation/lighthouse-home-mobile.png) | ![screenshot](documentation/lighthouse-home-desktop.png) | some minor warnings |
 | Contact | ![screenshot](documentation/lighthouse-contact-mobile.png) | ![screenshot](documentation/lighthouse-contact-desktop.png) | some minor warnings |
-| Plans | ![screenshot](documentation/lighthouse-plan-mobile.png) | ![screenshot](documentation/lighthouse-plan-desktop.png.png) | Some minor warnings |
+| Plans | ![screenshot](documentation/lighthouse-plan-mobile.png) | ![screenshot](documentation/lighthouse-plan-desktop.png) | Some minor warnings |
 | FAQ | ![screenshot](documentation/lighthouse-faq-mobile.png) | ![screenshot](documentation/lighthouse-plan-desktop.png) | Some minor warnings |
 | Profile | ![screenshot](documentation/lighthouse-profile-mobile.png) | ![screenshot](documentation/lighthouse-profile-desktop.png) | Some minor warnings |
 
