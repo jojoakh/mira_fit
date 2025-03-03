@@ -103,7 +103,7 @@
         <div class="col-md-6">
           <h2>Subscribe to Our Newsletter</h2>
           <p>Get the latest updates, tips, and exclusive offers.</p>
-          <form method="POST" action="">
+          <form method="POST" action="{% url 'home' %}">
             {% csrf_token %}
             <input type="hidden" name="form_type" value="newsletter">
             <div class="form-group">
@@ -178,7 +178,7 @@
             message.style.opacity = "0";
             setTimeout(() => message.remove(), 500); // Remove from DOM after fade
         });
-    }, 3000);
+    }, 5000);
 </script>
   {% endblock %}
 
