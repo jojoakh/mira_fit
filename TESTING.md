@@ -82,5 +82,15 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 | plans | urls.py | ![screenshot](documentation/plan-urls-pep8-validation.png) | Pass: No Errors |
 | plans | views.py | ![screenshot](documentation/plan-views-pep8-validation.png) | Pass: No Errors |
 
+## Browser Compatibility
+
+I've tested my deployed project on multiple browsers to check for compatibility issues.
+
+| Browser | Home | Plans | FAQ | Profile | Edit Profile | Logout | Login | Register | Checkout | Checkout Success | 404 Page | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Chrome | ![screenshot](documentation/homepage.png) | ![screenshot](documentation/fitness-plan.png) | ![screenshot](documentation/faq-page.png) | ![screenshot](documentation/profile-page.png) | ![screenshot](documentation/edit-profile-page.png) | ![screenshot](documentation/sign-out.png) | ![screenshot](documentation/login-page.png) | ![screenshot](documentation/signup-page.png) | ![screenshot](documentation/checkout.png) | ![screenshot](documentation/payment-success-message.png) | ![screenshot](documentation/404-error.png) | Works as expected |
+| Edge | ![screenshot](documentation/homepage-edge.png) | ![screenshot](documentation/plan-page-edge.png) | ![screenshot](documentation/faq-edge.png) | ![screenshot](documentation/profile-edge.png) | ![screenshot](documentation/edit-profile-edge.png) | ![screenshot](documentation/sign-out.png) | ![screenshot](documentation/login-edge.png) | ![screenshot](documentation/signup-edge.png) | ![screenshot](documentation/checkout-edge.png) | ![screenshot](documentation/payment-success-message.png) | ![screenshot](documentation/404-page-edge.png) | Works as expected |
+
+
 
 
