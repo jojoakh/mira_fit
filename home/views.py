@@ -46,7 +46,7 @@ def client_reviews(request):
             review.save()
             messages.success(request,
                              "Review submitted and awaits approval.")
-            return redirect('client_review')
+            return redirect('client_reviews')
     else:
         form = ClientReviewForm()
 

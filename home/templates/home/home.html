@@ -69,7 +69,7 @@
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ review.user.get_full_name }}</h4>
+                          <h4 class="card-title">{{ review.user.get_full_name|default:review.user.username }}</h4>
                             <p><strong>Rating:</strong> ⭐{{ review.rating }}/5</p>
                             <p class="card-text">{{ review.comment }}</p>
                             <small class="text-muted">{{ review.created_at|date:"F d, Y" }}</small>

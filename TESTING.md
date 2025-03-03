@@ -12,7 +12,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | Directory | File | Screenshot | Notes |
 | --- | --- | --- | --- |
 | profiles | profiles.html | ![screenshot](documentation/html-profiles-validation.png) | Pass: No Errors |
-| accounts | signup.html | ![screenshot](documentation/testing/validation/html/html-validation-signup.png) | I am aware of this error from the validator and is happening due to allauth. I have attempted to remove the `aria-describedby` in the signup form however I was unable to fix it for that reason error will still show up in the validator. |
+| accounts | signup.html | ![screenshot](documentation/html-signup-validation.png) | I am aware of this error from the validator and is happening due to allauth. I have attempted to remove it in the signup form however I was unable to fix it for that reason error will still show up in the validator. |
 | checkout | checkout.html | ![screenshot](documentation/html-checkout-validation.png) | Pass: No Errors |
 | contact | contact_form.html | ![screenshot](documentation/html-contact-validation.png) | Pass: No Errors |
 | faq | faq.html | ![screenshot](documentation/faq-html-validation.png) | Pass: No Errors |
